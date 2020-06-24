@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts::header"></head>
+
+<body>
+
+	<nav th:replace="layouts::navfoo"></nav>
+
+	<div class="container">
+	<h2>Main dashboard</h2><hr>
+		<div class="row">
+			<div class="col-md-8">
+				<h3>Projects</h3>
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							
+							<th scope="col">Project Name</th>
+							
+							<th scope="col">Project Stage</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="project : ${projects}">
+							
+							<td th:text="${project.name}"></td>
+							
+							<td th:text="${project.stage}"></td>
+						</tr>
+					</tbody>
+				</table>
+
+
+				<h3>Our Employees</h3>
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							
+							<th scope="col">First Name</th>
+							<th scope="col">Last Name</th>
+							<th scope="col">Project Count</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="aEmployeesProjectCount : ${employeesProjectCount}">
+							
+							<td th:text="${aEmployeesProjectCount.firstName}"></td>
+							<td th:text="${aEmployeesProjectCount.lastName}"></td>
+							<td th:text="${aEmployeesProjectCount.projectCount}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-4">
+				<canvas id="myPieChart" width="20" height="20"></canvas>
+			</div>
+		</div>
+
+
+	
+
+	</div>
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<script type="text/javascript" th:src="@{/js/mychart.js}"></script>
+
+</body>
+
+</html>

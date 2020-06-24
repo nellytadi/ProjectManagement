@@ -1,0 +1,9 @@
+@charset "ISO-8859-1";
+
+.table td{
+	font-size: 14px;
+}
+.h3, h3 {
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
