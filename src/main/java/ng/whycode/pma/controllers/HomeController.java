@@ -15,6 +15,7 @@ import ng.whycode.pma.dao.IProjectRepository;
 import ng.whycode.pma.dto.IEmployeeProject;
 import ng.whycode.pma.dto.IProjectStage;
 import ng.whycode.pma.entites.Project;
+import ng.whycode.pma.services.Car;
 
 @Controller
 public class HomeController {
@@ -23,10 +24,11 @@ public class HomeController {
 	
 	@Autowired
 	IEmployeeRepository empRepo;
-	
+	@Autowired
+	Car car;
 	@GetMapping("/")
 	public String displayHome(Model model) {
-
+		
 		List <Project> projects = proRepo.findAll();
 		model.addAttribute("projects",projects);
 		
@@ -35,9 +37,10 @@ public class HomeController {
 		
 		List<IProjectStage> projectStageCount = proRepo.projectStage();
 		ObjectMapper mapper = new ObjectMapper();
+		
 		try {
 			String jsonString = mapper.writeValueAsString(projectStageCount);
-			model.addAttribute("projectStageCount",projectStageCount);
+			model.addAttribute("chartData",jsonString);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}

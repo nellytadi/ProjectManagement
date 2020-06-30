@@ -6,22 +6,22 @@
     <nav th:replace="layouts::navfoo"></nav>
     
   <div class="container">
-  <h4>Create new employee</h4>
+  <h4>Create new user</h4>
   <hr>
-    <form action="/employee/store" method="POST" th:object="${employee}">
+    <form action="/user/register/store" method="POST" th:object="${user}">
 	  <div class="form-group">
-	    <label for="firstName">First Name</label>
-	    <input type="text" class="form-control" th:field="${employee.firstName}" id="firstName" aria-describedby="emailHelp">
-	  </div>
-	  <div class="form-group">
-	    <label for="lastName">Last Name</label>
-	    <input type="text" class="form-control" th:field="${employee.lastName}" id="lastName" aria-describedby="emailHelp">
-	  </div>
-	  <div class="form-group">
-	    <label for="email">Email Address</label>
-	    <input type="email" class="form-control" th:field="${employee.email}" id="email" aria-describedby="emailHelp">
+	    <label for="fullName">Full Name</label>
+	    <input type="text" class="form-control" th:field="${user.fullName}" id="fullName" aria-describedby="emailHelp">
 	  </div>
 	 
+	  <div class="form-group">
+	    <label for="email">Email Address</label>
+	    <input type="email" class="form-control" th:field="${user.email}" id="email" aria-describedby="emailHelp">
+	  </div>
+	  <div class="form-group">
+	    <label for="password">Password</label>
+	    <input type="password" class="form-control" th:field="${user.password}" id="password" aria-describedby="emailHelp">
+	  </div>
 	  <button type="submit" class="btn btn-primary">Submit</button>
 	</form>
   </div>

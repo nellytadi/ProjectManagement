@@ -1,17 +1,15 @@
 package ng.whycode.pma;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import ng.whycode.pma.dao.IEmployeeRepository;
 import ng.whycode.pma.dao.IProjectRepository;
-import ng.whycode.pma.entites.Employee;
-import ng.whycode.pma.entites.Project;
+import ng.whycode.pma.services.Car;
+import ng.whycode.pma.services.Engine;
+import ng.whycode.pma.services.Tire;
 
 @SpringBootApplication
 public class PmAppApplication {
@@ -23,6 +21,14 @@ public class PmAppApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(PmAppApplication.class, args);
+	}
+	
+	@Bean
+	public Car makeCar() {
+		Engine e = new Engine();
+		Tire t = new Tire();
+		
+		return new Car(e,t);
 	}
 //	@Bean
 //	public CommandLineRunner runner() {

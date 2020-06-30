@@ -11,14 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Project {
 	//AUTO increment is managed by Hibernate
 	//Identity Hibernate will rely on db increment - Disadvantage you lose Hibernate batching features eg batch updates on 1000 records 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_generator")
+	@SequenceGenerator(name = "project_generator", sequenceName = "project_seq", allocationSize = 1)
 	private long projectId;
+	
 	private String name;
 	private String stage;
 	private String description;
@@ -73,6 +76,8 @@ public class Project {
 	}
 
 	public void setStage(String stage) {
+		
+		stage = stage.toUpperCase();
 		this.stage = stage;
 	}
 
