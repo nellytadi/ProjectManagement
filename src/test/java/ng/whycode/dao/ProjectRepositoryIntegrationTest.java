@@ -1,4 +1,4 @@
-package ng.whycode.pma;
+package ng.whycode.dao;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,6 +12,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import ng.whycode.pma.PmAppApplication;
 import ng.whycode.pma.dao.IProjectRepository;
 import ng.whycode.pma.entites.Project;
 

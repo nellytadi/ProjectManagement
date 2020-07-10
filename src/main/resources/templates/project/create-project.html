@@ -34,7 +34,7 @@
 		
 		  <option th:each="employee: ${allEmployees}" 
 		  th:value="${employee.employeeId}"
-		  th:text="${employee.firstName} + ' '+ ${employee.lastName}"></option>
+		  th:text="${employee.fullName}"></option>
 		  
 		</select>
 	  </div>

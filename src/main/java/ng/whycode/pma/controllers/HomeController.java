@@ -3,6 +3,7 @@ package ng.whycode.pma.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,19 +16,20 @@ import ng.whycode.pma.dao.IProjectRepository;
 import ng.whycode.pma.dto.IEmployeeProject;
 import ng.whycode.pma.dto.IProjectStage;
 import ng.whycode.pma.entites.Project;
-import ng.whycode.pma.services.Car;
 
 @Controller
 public class HomeController {
+	@Value("${version}")
+	private String version;
 	@Autowired
 	IProjectRepository proRepo;
 	
 	@Autowired
 	IEmployeeRepository empRepo;
-	@Autowired
-	Car car;
+
 	@GetMapping("/")
 	public String displayHome(Model model) {
+		model.addAttribute("version",version);
 		
 		List <Project> projects = proRepo.findAll();
 		model.addAttribute("projects",projects);

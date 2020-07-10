@@ -21,10 +21,9 @@ public class Employee {
 	@SequenceGenerator(name = "employee_generator", sequenceName = "employee_seq", allocationSize = 1)
 	private long employeeId;
 	
-	private String firstName;
-	private String lastName;
+	private String fullName;
 	private String email;
-	
+	private int age;
 
 	@ManyToMany(cascade =  {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
 			   fetch = FetchType.LAZY)
@@ -37,25 +36,47 @@ public class Employee {
 	public Employee() {
 		
 	}
-	public Employee(String firstName, String lastName, String email) {
+	public Employee(String fullName, String email,int age) {
 		super();
 	
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.fullName = fullName;
 		this.email = email;
-		
+		this.age = age;
 	}
 	
-	public Employee(String firstName, String lastName, String email, List<Project> projects) {
+	public Employee(String fullName, String email,int age, List<Project> projects) {
 		super();
 	
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.fullName = fullName;
 		this.email = email;
+		this.age = age;
 		this.projects = projects;
 	}
-
-
+	
+	public long getEmployeeId() {
+		return employeeId;
+	}
+	public void setEmployeeId(long employeeId) {
+		this.employeeId = employeeId;
+	}
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
 	public List<Project> getProjects() {
 		return projects;
 	}
@@ -66,40 +87,7 @@ public class Employee {
 	}
 
 
-	public void setEmployeeId(long employeeId) {
-		this.employeeId = employeeId;
-	}
-
-
-	public long getEmployeeId() {
-		return employeeId;
-	}
-
-	public String getFirstName() {
-		
-		return firstName;
-	}
-
-	public void setFirstname(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 
 	
 }

@@ -10,12 +10,12 @@
   <hr>
     <form action="/employee/store" method="POST" th:object="${employee}">
 	  <div class="form-group">
-	    <label for="firstName">First Name</label>
-	    <input type="text" class="form-control" th:field="${employee.firstName}" id="firstName" aria-describedby="emailHelp">
+	    <label for="fullName">Full Name</label>
+	    <input type="text" class="form-control" th:field="${employee.fullName}" id="fullName" aria-describedby="emailHelp">
 	  </div>
 	  <div class="form-group">
-	    <label for="lastName">Last Name</label>
-	    <input type="text" class="form-control" th:field="${employee.lastName}" id="lastName" aria-describedby="emailHelp">
+	    <label for="age">Age</label>
+	    <input type="text" class="form-control" th:field="${employee.age}" id="age" aria-describedby="emailHelp">
 	  </div>
 	  <div class="form-group">
 	    <label for="email">Email Address</label>
