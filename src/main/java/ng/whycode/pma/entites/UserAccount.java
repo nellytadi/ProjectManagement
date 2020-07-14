@@ -1,5 +1,6 @@
 package ng.whycode.pma.entites;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,30 +8,28 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-//represents objects in a database
 @Entity
-@Table(name="users")
-public class User {
-
+@Table(name="user_accounts")
+public class UserAccount {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
-	@SequenceGenerator(name = "user_generator", sequenceName = "user_seq", allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="user_account_generator")
+	@SequenceGenerator(name = "user_account_generator", sequenceName = "user_accounts_seq", allocationSize = 1)
+	@Column(name="user_id")
 	private long userId;
 	
-	private String fullName;
+	@Column(name="username")
+	private String userName;
+	
 	private String email;
+	
 	private String password;
 	
-	public User() {
+	private boolean enabled = true;
+
+	public UserAccount() {
 		
 	}
 	
-	public User(String fullName, String email, String password) {
-		this.fullName = fullName;
-		this.email = email;
-		this.password = password;
-	}
-
 	public long getUserId() {
 		return userId;
 	}
@@ -39,12 +38,12 @@ public class User {
 		this.userId = userId;
 	}
 
-	public String getFullName() {
-		return fullName;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getEmail() {
@@ -63,4 +62,13 @@ public class User {
 		this.password = password;
 	}
 
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
+	
 }

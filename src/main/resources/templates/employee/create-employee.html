@@ -8,7 +8,7 @@
   <div class="container">
   <h4>Create new employee</h4>
   <hr>
-    <form action="/employee/store" method="POST" th:object="${employee}">
+    <form th:action="@{/employee/store}" method="POST" th:object="${employee}">
 	  <div class="form-group">
 	    <label for="fullName">Full Name</label>
 	    <input type="text" class="form-control" th:field="${employee.fullName}" id="fullName" aria-describedby="emailHelp">
