@@ -9,17 +9,27 @@
   <h4>Create new employee</h4>
   <hr>
     <form th:action="@{/employee/store}" method="POST" th:object="${employee}">
+    <input type="hidden" th:field="${employee.employeeId}">
 	  <div class="form-group">
 	    <label for="fullName">Full Name</label>
 	    <input type="text" class="form-control" th:field="${employee.fullName}" id="fullName" aria-describedby="emailHelp">
+	 	<span th:if="${#fields.hasErrors('fullName')}" 
+	 		th:errors="${employee.fullName}" class="errors">
+	 	</span>
 	  </div>
 	  <div class="form-group">
 	    <label for="age">Age</label>
-	    <input type="text" class="form-control" th:field="${employee.age}" id="age" aria-describedby="emailHelp">
+	    <input type="number" class="form-control" th:field="${employee.age}" id="age" aria-describedby="emailHelp">
+	  	<span th:if="${#fields.hasErrors('age')}" 
+	 		th:errors="${employee.age}" class="errors">
+	 	</span>
 	  </div>
 	  <div class="form-group">
 	    <label for="email">Email Address</label>
 	    <input type="email" class="form-control" th:field="${employee.email}" id="email" aria-describedby="emailHelp">
+	  	<span th:if="${#fields.hasErrors('email')}" 
+	 		th:errors="${employee.email}" class="errors">
+	 	</span>
 	  </div>
 	 
 	  <button type="submit" class="btn btn-primary">Submit</button>

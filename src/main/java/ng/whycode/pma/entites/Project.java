@@ -1,5 +1,6 @@
 package ng.whycode.pma.entites;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,9 +28,25 @@ public class Project {
 	@SequenceGenerator(name = "project_generator", sequenceName = "project_seq", allocationSize = 1)
 	private long projectId;
 	
+	@NotNull
+	@Size(min=2,max=100)
 	private String name;
+	
+	@NotNull
+	@Size(min=2,max=100)
 	private String stage;
+	
+	@NotNull
+	@Size(min=2)
 	private String description;
+	
+	@NotNull(message="date cannot be empty")
+	private Date startDate;
+	
+	@NotNull(message="date cannot be empty")
+	private Date endDate;
+
+
 
 	@ManyToMany(cascade =  {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
 			   fetch = FetchType.LAZY)
@@ -42,19 +62,22 @@ public class Project {
 	}
 
 
-	public Project(String name, String stage, String description, List<Employee> employees) {
+	public Project(String name, String stage, String description, List<Employee> employees,Date startDate, Date endDate) {
 		super();
 		this.name = name;
 		this.stage = stage;
 		this.description = description;
 		this.employees = employees;
+		this.startDate =startDate;
+		this.endDate = endDate;
 	}
-	public Project(String name, String stage, String description) {
+	public Project(String name, String stage, String description,Date startDate, Date endDate) {
 		super();
 		this.name = name;
 		this.stage = stage;
 		this.description = description;
-		
+		this.startDate =startDate;
+		this.endDate = endDate;
 	}
 
 	public long getProjectId() {
@@ -97,6 +120,25 @@ public class Project {
 
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
+	}
+	
+	public Date getStartDate() {
+		return startDate;
+	}
+
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 //	//Convenience method
 //	public void addEmployee(Employee emp) {

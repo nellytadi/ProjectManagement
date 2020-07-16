@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
   <head th:replace="layouts::header"></head>
-  
   <body>
   
   <nav th:replace="layouts::navfoo"></nav>
@@ -23,6 +22,7 @@
 	      <th scope="col">Full Name</th>
 	      <th scope="col">Age</th>
 	      <th scope="col">Email</th>
+	      <th scope="col">Action</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -31,6 +31,10 @@
 	      <td th:text="${employee.fullName}"></td>
 	      <td th:text="${employee.age}"></td>
 	      <td th:text="${employee.email}"></td>
+	      <td>
+	      	<a th:href="@{/employee/update(id=${employee.employeeId})}" class="action-btn">update</a>
+	      	<a th:href="@{/employee/delete(id=${employee.employeeId})}" class="action-btn red-btn" onClick="if(!confirm('Are you sure you want to delete?')) return false">delete</a>
+	      </td>
 	    </tr>
 	  </tbody>
 	</table>

@@ -7,3 +7,21 @@
 	margin-top: 30px;
 	margin-bottom: 15px;
 }
+
+  .action-btn {
+	border: 1px solid #ececec;
+	padding: 3px 9px;
+	font-size: 12px;
+	color: #5e82a8;
+}
+.action-btn:hover{
+	text-decoration:none;
+}
+.red-btn{
+	background: #fb4c4c;
+	color: #fff;
+}
+
+.red-btn:hover{
+		color: #fff;
+}

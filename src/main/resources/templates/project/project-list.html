@@ -19,6 +19,7 @@
 	      <th scope="col">Project Name</th>
 	      <th scope="col">Project Description</th>
 	      <th scope="col">Project Stage</th>
+	      <th scope="col">Action</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -27,6 +28,10 @@
 	      <td th:text="${project.name}"></td>
 	      <td th:text="${project.description}"></td>
 	      <td th:text="${project.stage}"></td>
+	       <td>
+	      	<a th:href="@{/project/update(id=${project.projectId})}" class="action-btn">update</a>
+	      	<a th:href="@{/project/delete(id=${project.projectId})}" class="action-btn red-btn" onClick="if(!confirm('Are you sure you want to delete?')) return false">delete</a>
+	      </td>
 	    </tr>
 	  </tbody>
 	</table>

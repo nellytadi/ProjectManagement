@@ -12,8 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
+
+import ng.whycode.pma.validation.UniqueValues;
 
 @Entity
 public class Employee {
@@ -23,8 +28,16 @@ public class Employee {
 	@SequenceGenerator(name = "employee_generator", sequenceName = "employee_seq", allocationSize = 1)
 	private long employeeId;
 	
+	@NotNull
+	@Size(min=2,max=50)
 	private String fullName;
+	
+	@NotNull
+	@Email
+	@UniqueValues
 	private String email;
+	
+	@NotNull
 	private int age;
 
 	@ManyToMany(cascade =  {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
