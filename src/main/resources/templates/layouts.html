@@ -10,9 +10,8 @@
 	<link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Project Management</title>
     
-    <!-- Optional JavaScript -->
-      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+  
   </head>
 
 <nav th:fragment="navfoo" class="navbar navbar-expand-lg  navbar-dark bg-dark">
@@ -32,7 +31,9 @@
        <li class="nav-item">
         <a class="nav-link" th:href="@{/project}">Projects</a>
       </li>
-
+	<li class="nav-item">
+        <a class="nav-link" th:href="@{/project/timelines}">Project Timeline</a>
+      </li>
     </ul>
   
   </div>

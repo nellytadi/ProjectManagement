@@ -1,6 +1,5 @@
 package ng.whycode.pma.controllers;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -8,15 +7,19 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import ng.whycode.pma.dao.IEmployeeRepository;
 import ng.whycode.pma.dao.IProjectRepository;
+import ng.whycode.pma.dto.IProjectStage;
+import ng.whycode.pma.dto.IProjectTimeline;
 import ng.whycode.pma.entites.Employee;
 import ng.whycode.pma.entites.Project;
 
@@ -90,6 +93,26 @@ public class ProjectController {
 		 proRepo.deleteById(id);;
 		
 		 return "redirect:/project";
+		
+	}
+	
+	@GetMapping("/timelines")
+	public String projectTimeline(Model model) {
+		List<IProjectTimeline> projectTimeline = proRepo.getProjectTimeline();
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		try {
+			String jsonString = mapper.writeValueAsString(projectTimeline);
+			model.addAttribute("projectTimeline", jsonString);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
+	
+		
+		
+		 return "project/timeline";
 		
 	}
 	

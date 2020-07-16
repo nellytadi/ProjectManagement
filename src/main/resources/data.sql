@@ -10,10 +10,10 @@ insert into employee (employee_id, full_name, email, age) values (nextval('emplo
 insert into employee (employee_id, full_name, email, age) values (nextval('employee_seq'), 'Tony Roggers', 'roggers@gmail.com', 19);
 
 -- INSERT PROJECTS			
-insert into project (project_id, name, stage, description) values (nextval('project_seq'), 'Large Production Deploy', 'NOTSTARTED', 'This requires all hands on deck for the final deployment of the software into production');
-insert into project (project_id, name, stage, description) values (nextval('project_seq'), 'New Employee Budget',  'COMPLETED', 'Decide on a new employee bonus budget for the year and figureout who will be promoted');
-insert into project (project_id, name, stage, description) values (nextval('project_seq'), 'Office Reconstruction', 'INPROGRESS', 'The office building in Monroe has been damaged due to hurricane in the region. This needs to be reconstructed');
-insert into project (project_id, name, stage, description) values (nextval('project_seq'), 'Improve Intranet Security', 'INPROGRESS', 'With the recent data hack, the office security needs to be improved and proper security team needs to be hired for implementation');
+insert into project (project_id, name, stage, description, start_date, end_date) values (nextval('project_seq'), 'Large Production Deploy', 'NOTSTARTED', 'This requires all hands on deck for the final deployment of the software into production','2020-07-01', '2020-07-14');
+insert into project (project_id, name, stage, description, start_date, end_date) values (nextval('project_seq'), 'New Employee Budget',  'COMPLETED', 'Decide on a new employee bonus budget for the year and figureout who will be promoted','2020-07-05', '2020-07-07');
+insert into project (project_id, name, stage, description, start_date, end_date) values (nextval('project_seq'), 'Office Reconstruction', 'INPROGRESS', 'The office building in Monroe has been damaged due to hurricane in the region. This needs to be reconstructed','2020-07-09', '2020-07-12');
+insert into project (project_id, name, stage, description, start_date, end_date) values (nextval('project_seq'), 'Improve Intranet Security', 'INPROGRESS', 'With the recent data hack, the office security needs to be improved and proper security team needs to be hired for implementation','2020-07-16', '2020-07-30');
 
 -- INSERT PROJECT_EMPLOYEE_RELATION
 insert into project_employee (employee_id, project_id) (select e.employee_id, p.project_id from employee e, project p where e.full_name ='John Warton' AND p.name = 'Large Production Deploy');

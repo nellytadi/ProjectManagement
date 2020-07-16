@@ -2,6 +2,10 @@ package ng.whycode.dao;
 
 import static org.junit.Assert.assertEquals;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +33,10 @@ public class ProjectRepositoryIntegrationTest {
 	IProjectRepository proRepo;
 	
 	@Test
-	public void ifNewProjectIsSaved_ThenSuccess() {
-		Project project = new Project("First Test Project","COMPLETED","This is the first project description");
+	public void ifNewProjectIsSaved_ThenSuccess() throws ParseException {
+		Date startDate=new SimpleDateFormat("dd-MM-yyyy").parse("01-07-2020");
+		Date endDate=new SimpleDateFormat("dd-MM-yyyy").parse("30-07-2020");
+		Project project = new Project("First Test Project","COMPLETED","This is the first project description",startDate,endDate);
 		
 		proRepo.save(project);
 		
